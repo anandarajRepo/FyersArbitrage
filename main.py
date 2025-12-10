@@ -220,11 +220,11 @@ def show_authentication_status():
     pin = os.environ.get('FYERS_PIN')
 
     print(f"\n Credential Status:")
-    print(f"  Client ID: {' Set' if client_id else '✗ Missing'}")
-    print(f"  Secret Key: {' Set' if secret_key else '✗ Missing'}")
-    print(f"  Access Token: {' Set' if access_token else '✗ Missing'}")
-    print(f"  Refresh Token: {' Set' if refresh_token else '✗ Missing'}")
-    print(f"  Trading PIN: {' Set' if pin else '✗ Missing'}")
+    print(f"  Client ID: {' Set' if client_id else ' Missing'}")
+    print(f"  Secret Key: {' Set' if secret_key else ' Missing'}")
+    print(f"  Access Token: {' Set' if access_token else ' Missing'}")
+    print(f"  Refresh Token: {' Set' if refresh_token else ' Missing'}")
+    print(f"  Trading PIN: {' Set' if pin else ' Missing'}")
 
     print(f"\n Available Commands:")
     print(f"  Setup Auth: python main.py auth")
@@ -261,7 +261,7 @@ def validate_configuration():
 
         print("\n Configuration Check:")
         if issues:
-            print("\n  ✗ CRITICAL ISSUES:")
+            print("\n   CRITICAL ISSUES:")
             for issue in issues:
                 print(f"    • {issue}")
 
@@ -278,7 +278,7 @@ def validate_configuration():
         return len(issues) == 0
 
     except Exception as e:
-        print(f"\n✗ Configuration validation failed: {e}")
+        print(f"\n Configuration validation failed: {e}")
         return False
 
 
@@ -315,10 +315,10 @@ def main():
             if validate_configuration():
                 print("\n Configuration validation passed!")
             else:
-                print("\n✗ Configuration validation failed!")
+                print("\n Configuration validation failed!")
 
         else:
-            print(f"✗ Unknown command: {command}")
+            print(f" Unknown command: {command}")
             print("\nAvailable commands:")
             commands = [
                 ("run", "Run the arbitrage trading strategy"),
@@ -368,11 +368,11 @@ def main():
             if validate_configuration():
                 print("\n Configuration is valid!")
             else:
-                print("\n✗ Configuration has issues")
+                print("\n Configuration has issues")
         elif choice == "7":
             print("\n Goodbye! Happy Trading!")
         else:
-            print(f"✗ Invalid choice: {choice}")
+            print(f" Invalid choice: {choice}")
 
 
 if __name__ == "__main__":

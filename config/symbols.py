@@ -39,19 +39,19 @@ class ArbitrageSymbolManager:
         # Format: spot_symbol -> (fyers_spot, fyers_futures, lot_size)
         self._arbitrage_pairs: Dict[str, Dict] = {
             # Nifty 50 Stocks
-            "RELIANCE": {
-                "spot": "NSE:RELIANCE-EQ",
-                "futures": "NSE:RELIANCE25JANFUT",  # Update monthly
-                "lot_size": 250,
-                "tick_size": 0.05,
-                "sector": "ENERGY"
-            },
             "TCS": {
                 "spot": "NSE:TCS-EQ",
                 "futures": "NSE:TCS25JANFUT",
                 "lot_size": 125,
                 "tick_size": 0.05,
                 "sector": "IT"
+            },
+            "RELIANCE": {
+                "spot": "NSE:RELIANCE-EQ",
+                "futures": "NSE:RELIANCE25JANFUT",  # Update monthly
+                "lot_size": 250,
+                "tick_size": 0.05,
+                "sector": "ENERGY"
             },
             "HDFCBANK": {
                 "spot": "NSE:HDFCBANK-EQ",

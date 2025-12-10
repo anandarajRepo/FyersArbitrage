@@ -198,16 +198,16 @@ def setup_auth_only():
 
     # Generate auth URL
     auth_url = auth_manager.generate_auth_url()
-    print(f"\n✓ AUTHENTICATION STEPS:")
+    print(f"\n AUTHENTICATION STEPS:")
     print(f"\n1. Open this URL in your browser:")
     print(f"   {auth_url}")
     print(f"\n2. Complete the authorization")
     print(f"3. Copy the authorization code from redirect URL")
 
-    auth_code = input("\n✓ Enter authorization code: ").strip()
+    auth_code = input("\n Enter authorization code: ").strip()
 
     if not auth_code:
-        print("✗ No authorization code provided")
+        print(" No authorization code provided")
         return False
 
     # Exchange for tokens
@@ -220,17 +220,17 @@ def setup_auth_only():
 
         # Get PIN for future refreshes
         try:
-            pin = input("\n✓ Enter trading PIN (for automatic refresh): ").strip()
+            pin = input("\n Enter trading PIN (for automatic refresh): ").strip()
             if pin and len(pin) >= 4:
                 auth_manager.save_to_env('FYERS_PIN', pin)
-                print("✓ PIN saved for automatic token refresh")
+                print(" PIN saved for automatic token refresh")
         except:
-            print("✓ PIN setup skipped")
+            print(" PIN setup skipped")
 
-        print("\n✓ AUTHENTICATION SUCCESSFUL!")
+        print("\n AUTHENTICATION SUCCESSFUL!")
         return True
     else:
-        print("\n✗ Authentication failed")
+        print("\n Authentication failed")
         return False
 
 
@@ -262,18 +262,18 @@ def test_authentication():
     auth_manager = FyersAuthManager()
 
     if not all([auth_manager.client_id, auth_manager.secret_key]):
-        print("✗ Missing API credentials")
+        print(" Missing API credentials")
         print("Run: python main.py auth")
         return False
 
-    print("✓ Testing authentication...")
+    print(" Testing authentication...")
     access_token = auth_manager.get_valid_access_token()
 
     if not access_token:
-        print("✗ Authentication failed")
+        print(" Authentication failed")
         return False
 
-    print("✓ Authentication successful!")
+    print(" Authentication successful!")
 
     # Try to get profile
     try:
@@ -284,8 +284,8 @@ def test_authentication():
             result = response.json()
             if result.get('s') == 'ok':
                 profile = result.get('data', {})
-                print(f"✓ Name: {profile.get('name', 'Unknown')}")
-                print(f"✓ Email: {profile.get('email', 'Unknown')}")
+                print(f" Name: {profile.get('name', 'Unknown')}")
+                print(f" Email: {profile.get('email', 'Unknown')}")
     except:
         pass
 

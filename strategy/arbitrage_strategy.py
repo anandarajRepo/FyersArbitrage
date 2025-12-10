@@ -90,7 +90,7 @@ class SpotFuturesArbitrageStrategy:
         logger.info("Z-SCORE BASED SPOT-FUTURES ARBITRAGE STRATEGY")
         logger.info("=" * 80)
         logger.info(f"Trading Universe: {len(self.trading_symbols)} pairs")
-        logger.info(f"Portfolio Value: ₹{strategy_config.portfolio_value:,}")
+        logger.info(f"Portfolio Value: Rs:{strategy_config.portfolio_value:,}")
         logger.info(f"Max Positions: {strategy_config.max_positions}")
         logger.info(f"Basis Lookback: {strategy_config.basis_lookback} periods")
         logger.info(f"Entry Z-Score: ±{strategy_config.entry_zscore_threshold}")
@@ -113,7 +113,7 @@ class SpotFuturesArbitrageStrategy:
             # Subscribe to symbols
             # await self._subscribe_to_symbols()
 
-            logger.info("✓ Z-Score Arbitrage Strategy initialized successfully")
+            logger.info(" Z-Score Arbitrage Strategy initialized successfully")
             return True
 
         except Exception as e:
@@ -217,7 +217,7 @@ class SpotFuturesArbitrageStrategy:
 
                 if signal:
                     signals.append(signal)
-                    logger.info(f"✓ Signal generated: {symbol} | "
+                    logger.info(f" Signal generated: {symbol} | "
                                 f"Type: {signal.signal_type.value} | "
                                 f"Z-Score: {signal.z_score:.2f} | "
                                 f"Confidence: {signal.confidence:.2f}")
@@ -244,7 +244,7 @@ class SpotFuturesArbitrageStrategy:
             # For now, just track position
             self.positions[signal.symbol] = position
 
-            logger.info(f"✓ Position opened: {signal.symbol}")
+            logger.info(f" Position opened: {signal.symbol}")
             return True
 
         except Exception as e:
@@ -328,7 +328,7 @@ class SpotFuturesArbitrageStrategy:
             del self.positions[symbol]
 
             # Log result
-            result_symbol = "✓" if trade_result.net_pnl > 0 else "✗"
+            result_symbol = "" if trade_result.net_pnl > 0 else "✗"
             logger.info(f"{result_symbol} Position closed: {symbol}")
             logger.info(f"  Net P&L: ₹{trade_result.net_pnl:.2f}")
             logger.info(f"  Holding Period: {trade_result.holding_period:.1f} minutes")

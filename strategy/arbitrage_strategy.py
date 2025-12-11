@@ -117,7 +117,7 @@ class SpotFuturesArbitrageStrategy:
             return True
 
         except Exception as e:
-            logger.error(f"✗ Strategy initialization failed: {e}")
+            logger.error(f" Strategy initialization failed: {e}")
             return False
 
     def update_market_data(self, symbol: str, spot_quote: LiveQuote, futures_quote: LiveQuote):
@@ -248,7 +248,7 @@ class SpotFuturesArbitrageStrategy:
             return True
 
         except Exception as e:
-            logger.error(f"✗ Error executing signal for {signal.symbol}: {e}")
+            logger.error(f" Error executing signal for {signal.symbol}: {e}")
             return False
 
     async def monitor_positions(self):
